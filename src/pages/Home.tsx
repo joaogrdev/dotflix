@@ -1,9 +1,11 @@
-import React from 'react'
+import MovieList from "@/features/movies/components/MovieList";
 
 const Home = () => {
   return (
-    <div>Home</div>
-  )
-}
+    <section className="tablet:py-5">
+      <MovieList />
+    </section>
+  );
+};
 
-export default Home
+export default Home;

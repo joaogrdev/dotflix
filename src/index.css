@@ -10,6 +10,8 @@
   --breakpoint-desktop: 1200px;
 
   --color-contrast: #88c125;
+  --color-lightest: #ffffff;
+  --color-darkest: #000000;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
