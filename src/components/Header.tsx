@@ -1,4 +1,4 @@
-import SearchBar from "@/features/Search/SearchBar";
+import SearchBar from "@/features/search/SearchBar";
 import { cn } from "@/lib/utils";
 import { Heart, ShoppingCart } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
