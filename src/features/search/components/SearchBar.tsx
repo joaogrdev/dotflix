@@ -5,8 +5,11 @@ import {
   InputGroupInput,
 } from "@/components/ui/input-group";
 import { cn } from "@/lib/utils";
-import { SearchIcon } from "lucide-react";
+import { Search, Trash } from "lucide-react";
+import { useSearchStore } from "../store/useSearchStore";
 const SearchBar = () => {
+  const { query, setQuery } = useSearchStore();
+
   return (
     <InputGroup
       className={cn(
@@ -16,15 +19,24 @@ const SearchBar = () => {
       <InputGroupInput
         placeholder="O que você quer assistir hoje?"
         className={cn("indent-2")}
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
       />
+
+      <InputGroupAddon>
+        <Search className="text-contrast"/>
+      </InputGroupAddon>
+
       <InputGroupAddon align="inline-end">
         <InputGroupButton
           variant={"default"}
           className={cn(
-            "bg-contrast w-10 h-full hover:bg-primary/90 hover:scale-110 transition-all duration-300"
+            "w-8 h-full bg-input text-primary hover:bg-primary/25 hover:scale-110 transition-all duration-300"
           )}
+          onClick={() => setQuery("")}
+          title="Limpar pesquisa"
         >
-          <SearchIcon />
+          <Trash />
         </InputGroupButton>
       </InputGroupAddon>
     </InputGroup>

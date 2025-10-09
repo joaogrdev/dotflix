@@ -1,8 +1,5 @@
-import SearchBar from "@/features/search/SearchBar";
-import { cn } from "@/lib/utils";
-import { Heart } from "lucide-react";
+import SearchBar from "@/features/search/components/SearchBar";
 import { ThemeToggle } from "./ThemeToggle";
-import { Button } from "./ui/button";
 import CartBar from "@/features/cart/components/CartBar";
 import { useState } from "react";
 import FavoritesBar from "@/features/favorites/components/FavoritesBar";
@@ -22,7 +19,10 @@ const Header = () => {
 
       <div className="flex justify-end items-center gap-2 tablet:gap-2 order-2 tablet:order-last">
         <ThemeToggle />
-        <FavoritesBar open={isFavoritesBarOpen} onOpenChange={setIsFavoritesBarOpen} />
+        <FavoritesBar
+          open={isFavoritesBarOpen}
+          onOpenChange={setIsFavoritesBarOpen}
+        />
         <CartBar open={isCartBarOpen} onOpenChange={setIsCartBarOpen} />
       </div>
     </header>
