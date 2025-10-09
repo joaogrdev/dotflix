@@ -2,6 +2,7 @@ import { RouterProvider } from "react-router";
 import { router } from "./router/router";
 import { ThemeProvider } from "./components/ThemeProvider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from "sonner";
 
 function App() {
   const queryClient = new QueryClient();
@@ -10,6 +11,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider defaultTheme="dark">
         <RouterProvider router={router} />
+        <Toaster />
       </ThemeProvider>
     </QueryClientProvider>
   );

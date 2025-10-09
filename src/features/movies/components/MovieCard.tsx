@@ -1,14 +1,13 @@
 import type { Movie } from "@/types/Movie";
 import { Star } from "lucide-react";
-import { cn, formatCurrency } from "@/lib/utils";
+import { cn, formatCurrency, formatRating, generateAndFormatPriceMovie } from "@/lib/utils";
 import FavoriteButton from "./FavoriteButton";
 import TrailerButton from "./TrailerButton";
 import AddToCartButton from "./AddToCartButton";
 import MovieImage from "./MovieImage";
 
 const MovieCard = ({ movie }: { movie: Movie }) => {
-  const price = movie.vote_average * 3.14;
-  const rating = movie.vote_average.toFixed(1);
+  console.log(movie);
 
   return (
     <div className="group relative w-full aspect-[3/2] mobile:aspect-[2/3] rounded-lg overflow-hidden cursor-pointer transition-all duration-300">
@@ -26,12 +25,12 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
         <div className="flex items-center justify-between">
           <span className="text-lightest font-thin text-lg -mt-1">
             <span className="text-xs">R$ </span>
-            {formatCurrency(price)}
+            {generateAndFormatPriceMovie(movie.id)}
           </span>
 
           <div className="flex items-center gap-1 text-xs">
             <Star className={cn("w-3 fill-contrast text-contrast")} />
-            <span>{rating}</span>
+            <span>{formatRating(movie.vote_average)}</span>
           </div>
         </div>
 
