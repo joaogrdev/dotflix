@@ -20,5 +20,42 @@ export function generateAndFormatPriceMovie(movieId: number): string {
 }
 
 export function formatRating(rating: number): string {
+  if (isNaN(rating)) return "-";
   return rating.toFixed(1);
+}
+
+export function applyMask(value: any, type: "cep" | "cpf" | "celular"): any {
+  const content = value.replace(/\D/g, "");
+
+  switch (type) {
+    case "cep":
+      // 99999-999
+      return content.replace(/^(\d{5})(\d)/, "$1-$2").slice(0, 9);
+
+    case "celular":
+      if (content.length <= 10) {
+        // (99) 9999-9999
+        return content
+          .replace(/^(\d{2})(\d)/, "($1) $2")
+          .replace(/(\d{4})(\d)/, "$1-$2")
+          .slice(0, 14);
+      } else {
+        // (99) 99999-9999
+        return content
+          .replace(/^(\d{2})(\d)/, "($1) $2")
+          .replace(/(\d{5})(\d)/, "$1-$2")
+          .slice(0, 15);
+      }
+
+    case "cpf":
+      // 999.999.999-99
+      return content
+        .replace(/^(\d{3})(\d)/, "$1.$2")
+        .replace(/^(\d{3})\.(\d{3})(\d)/, "$1.$2.$3")
+        .replace(/\.(\d{3})(\d)/, ".$1-$2")
+        .slice(0, 14);
+
+    default:
+      return value;
+  }
 }

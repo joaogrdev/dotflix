@@ -7,8 +7,10 @@ import {
 import { cn } from "@/lib/utils";
 import { Search, Trash } from "lucide-react";
 import { useSearchStore } from "../store/useSearchStore";
+import { useLocation } from "react-router";
 const SearchBar = () => {
   const { query, setQuery } = useSearchStore();
+  const { pathname } = useLocation();
 
   return (
     <InputGroup
@@ -21,10 +23,11 @@ const SearchBar = () => {
         className={cn("indent-2")}
         value={query}
         onChange={(e) => setQuery(e.target.value)}
+        disabled={pathname === "/checkout"}
       />
 
       <InputGroupAddon>
-        <Search className="text-contrast"/>
+        <Search className="text-contrast" />
       </InputGroupAddon>
 
       <InputGroupAddon align="inline-end">

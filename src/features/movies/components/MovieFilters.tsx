@@ -28,8 +28,8 @@ const MovieFilters = ({
   filterSelected: Filter;
 }) => {
   return (
-    <div className="flex items-center justify-between mb-6">
-      <h2 className="text-xl tablet:text-2xl font-bold">
+    <div className="flex flex-wrap items-center justify-between mb-6 gap-2">
+      <h2 className="text-2xl tablet:text-4xl font-bold whitespace-nowrap font-title">
         {filterSelected.label}
       </h2>
       <div className="flex items-center gap-2">
@@ -39,7 +39,7 @@ const MovieFilters = ({
               <Button
                 key={filter.query}
                 className={cn(
-                  "rounded-md bg-input text-sm font-thin text-primary hover:bg-primary/25 hover:scale-102 transition-all duration-300 h-8"
+                  "rounded-sm tablet:rounded-md bg-input text-sm font-light text-primary hover:bg-primary/25 hover:scale-102 transition-all duration-300 h-6 tablet:h-8"
                 )}
                 onClick={() => handleSelectFilter(filter)}
               >
