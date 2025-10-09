@@ -1,12 +1,11 @@
 import {
   Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
+  DialogContent
 } from "@/components/ui/dialog";
 import { useTrailer } from "../hooks/useTrailer";
 import type { Movie } from "@/types/Movie";
 import Loader from "@/components/Loader";
+import FeedbackMsg from "@/components/FeedbackMsg";
 
 const TrailerPlayer = ({
   onClose,
@@ -20,15 +19,16 @@ const TrailerPlayer = ({
 
   return (
     <Dialog open onOpenChange={onClose}>
-      <DialogContent className="w-1/2 min-w-[280px] bg-muted/75 backdrop-blur-lg rounded-lg overflow-hidden p-0">
-        <DialogHeader className="p-4 pb-0">
-          <DialogTitle className="text-lg text-primary">
-            🎞 {movie.title}
-          </DialogTitle>
-        </DialogHeader>
+      <DialogContent className="aspect-[16/9] min-w-[320px] bg-muted/75 backdrop-blur-lg rounded-lg overflow-hidden p-0">
         <div className="relative aspect-video w-full">
           {isLoading && <Loader className="w-full h-full" />}
-          {isError && <p>Erro ao carregar trailer</p>}
+          {isError && (
+            <FeedbackMsg
+              msg="Trailer não encontrado."
+              type="error"
+              className="h-full"
+            />
+          )}
           {!isLoading && trailer && (
             <iframe
               loading="lazy"
