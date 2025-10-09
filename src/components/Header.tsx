@@ -16,8 +16,7 @@ const Header = () => {
       <h1
         className="text-3xl tablet:text-4xl font-bold cursor-pointer font-logo"
         onClick={() => {
-          if (pathname !== "/checkout") navigate("/");
-          else window.location.reload();
+          if (pathname === "/checkout") navigate("/");
         }}
       >
         d<span className="text-contrast text-lg tablet:text-2xl">⬤</span>tflix
