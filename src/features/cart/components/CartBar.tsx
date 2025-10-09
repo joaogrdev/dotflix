@@ -12,9 +12,9 @@ import {
 import { cn } from "@/lib/utils";
 import { ShoppingCart, X } from "lucide-react";
 import { useCartStore } from "@/features/cart/store/useCartStore";
-import CartItem from "./CartItem";
 import CartTotal from "./CartTotal";
-import ClearCartButton from "./ClearCartButton";
+import ClearItemsButton from "@/components/ClearItemsButton";
+import SidebarItem from "@/components/SidebarItem";
 
 const CartBar = ({
   open,
@@ -57,9 +57,9 @@ const CartBar = ({
               "flex items-center justify-between gap-2 border-b pb-3"
             )}
           >
-            <span className="font-semibold text-xl">Meu carrinho</span>
+            <span className="font-semibold text-xl">Meu Carrinho</span>
             <div className="flex items-center gap-2">
-              <ClearCartButton qtdItens={cartLength} />
+              <ClearItemsButton type="Carrinho" qtdItens={cartLength} />
               <SheetClose>
                 <Button
                   className={cn(
@@ -75,10 +75,10 @@ const CartBar = ({
 
         <div className="flex flex-col gap-3 flex-1 overflow-y-scroll scrollbar">
           {cartItems.length > 0 ? (
-            cartItems.map((item) => <CartItem key={item.id} item={item} />)
+            cartItems.map((item) => <SidebarItem key={item.id} type="Carrinho" item={item} />)
           ) : (
             <p className="text-muted-foreground text-center">
-              Seu carrinho esta vazio
+              Seu carrinho esta vazio.
             </p>
           )}
         </div>

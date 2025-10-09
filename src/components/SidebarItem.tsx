@@ -11,15 +11,24 @@ import { cn } from "@/lib/utils";
 import { useCartStore } from "@/features/cart/store/useCartStore";
 import type { CartMovie } from "@/types/CartMovie";
 import { Trash } from "lucide-react";
+import { useFavoritesStore } from "@/features/favorites/store/useFavoritesStore";
+import { toastError } from "@/lib/toasts";
+import { useTheme } from "./ThemeProvider";
+import AddToCartButton from "@/features/favorites/components/AddToCartButton";
 
-const CartItem = ({ item }: { item: CartMovie }) => {
-  const removeItem = useCartStore((state) => state.removeItem);
+const SidebarItem = ({ type, item }: { type: string; item: CartMovie }) => {
+  const { theme } = useTheme();
+  const removeItem =
+    type === "Carrinho"
+      ? useCartStore((state) => state.removeItem)
+      : useFavoritesStore((state) => state.removeFavorite);
 
-  const handleRemoveCartItem = () => {
+  const handleRemoveItem = () => {
     try {
       removeItem(item.id);
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
+      toastError("ERRO", error.message, theme, "bottom-right");
     }
   };
 
@@ -38,11 +47,20 @@ const CartItem = ({ item }: { item: CartMovie }) => {
         </ItemDescription>
       </ItemContent>
 
-      <ItemActions>
+      <ItemActions className="flex flex-col">
+        {type !== "Carrinho" && <AddToCartButton movie={item} />}
         <Button
           variant={"outline"}
-          className={cn("size-8 hover:scale-110 self-start")}
-          onClick={handleRemoveCartItem}
+          className={cn(
+            "size-7 hover:scale-110 self-start rounded-sm",
+            type === "Carrinho" && "size-8"
+          )}
+          onClick={handleRemoveItem}
+          title={
+            type === "Carrinho"
+              ? "Remover do carrinho"
+              : "Remover dos favoritos"
+          }
         >
           <Trash className="text-contrast size-4" />
         </Button>
@@ -51,4 +69,4 @@ const CartItem = ({ item }: { item: CartMovie }) => {
   );
 };
 
-export default CartItem;
+export default SidebarItem;
