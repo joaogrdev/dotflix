@@ -48,15 +48,16 @@ const SidebarItem = ({ type, item }: { type: string; item: CartMovie }) => {
       >
         <ItemTitle
           className={cn(
-            "text-base font-semibold font-title",
+            "text-sm mobile:text-base font-semibold font-title leading-snug",
             type === "Checkout" && "truncate max-w-[90%]"
           )}
+          title={item.title}
         >
           {item.title}
         </ItemTitle>
         <ItemDescription
           className={cn(
-            "text-lg -mt-1 text-primary/75",
+            "text-base mobile:text-lg -mt-1 text-primary/75",
             type === "Checkout" && "text-sm"
           )}
         >
