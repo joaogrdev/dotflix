@@ -27,7 +27,7 @@ const OrderCompletedModal = ({ open }: { open: boolean }) => {
   };
 
   return (
-    <Dialog open={true}>
+    <Dialog open={open}>
       <DialogContent
         className="flex flex-col items-center gap-6 w-fit bg-muted min-w-[300px]"
         showCloseButton={false}
