@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Movie } from "@/types/Movie";
+import { ImageOff } from "lucide-react";
 
 const MovieImage = ({ movie }: { movie: Movie }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -16,12 +17,20 @@ const MovieImage = ({ movie }: { movie: Movie }) => {
       : `https://image.tmdb.org/t/p/w300${movie.poster_path}`;
 
   return (
-    <img
-      loading="lazy"
-      src={imageUrl}
-      alt={movie.title}
-      className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
-    />
+    <>
+      {movie.poster_path ? (
+        <img
+          loading="lazy"
+          src={imageUrl}
+          alt={movie.title}
+          className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
+        />
+      ) : (
+        <div className="w-full h-full flex items-center justify-center">
+          <ImageOff className="tablet:size-10" />
+        </div>
+      )}
+    </>
   );
 };
 

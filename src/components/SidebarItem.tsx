@@ -10,7 +10,7 @@ import {
 import { cn } from "@/lib/utils";
 import { useCartStore } from "@/features/cart/store/useCartStore";
 import type { CartMovie } from "@/types/CartMovie";
-import { Trash } from "lucide-react";
+import { ImageOff, Trash } from "lucide-react";
 import { useFavoritesStore } from "@/features/favorites/store/useFavoritesStore";
 import { toastError } from "@/lib/toasts";
 import { useTheme } from "./ThemeProvider";
@@ -41,7 +41,17 @@ const SidebarItem = ({ type, item }: { type: string; item: CartMovie }) => {
           type === "Checkout" && "aspect-[9/3]"
         )}
       >
-        <img src={`https://image.tmdb.org/t/p/w500${item.poster}`} alt="" />
+        {item.poster ? (
+          <img
+            loading="lazy"
+            src={`https://image.tmdb.org/t/p/w300/${item.poster}`}
+            alt={item.title}
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center">
+            <ImageOff/>
+          </div>
+        )}
       </ItemMedia>
       <ItemContent
         className={cn(type === "Checkout" && "grid grid-cols-[1fr_auto]")}
