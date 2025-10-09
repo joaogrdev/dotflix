@@ -1,14 +1,16 @@
 import type { Movie } from "@/types/Movie";
 import { Star } from "lucide-react";
-import { cn, formatCurrency, formatRating, generateAndFormatPriceMovie } from "@/lib/utils";
+import {
+  cn,
+  formatRating,
+  generateAndFormatPriceMovie,
+} from "@/lib/utils";
 import FavoriteButton from "./FavoriteButton";
 import TrailerButton from "./TrailerButton";
 import AddToCartButton from "./AddToCartButton";
 import MovieImage from "./MovieImage";
 
 const MovieCard = ({ movie }: { movie: Movie }) => {
-  console.log(movie);
-
   return (
     <div className="group relative w-full aspect-[3/2] mobile:aspect-[2/3] rounded-lg overflow-hidden cursor-pointer transition-all duration-300">
       <MovieImage movie={movie} />
