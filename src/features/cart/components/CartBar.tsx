@@ -15,6 +15,7 @@ import { useCartStore } from "@/features/cart/store/useCartStore";
 import CartTotal from "./CartTotal";
 import ClearItemsButton from "@/components/ClearItemsButton";
 import SidebarItem from "@/components/SidebarItem";
+import { useNavigate } from "react-router";
 
 const CartBar = ({
   open,
@@ -23,6 +24,7 @@ const CartBar = ({
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }) => {
+  const navigate = useNavigate();
   const cartItems = useCartStore((state) => state.cartItems);
   const cartLength = cartItems.length;
 
@@ -57,7 +59,7 @@ const CartBar = ({
               "flex items-center justify-between gap-2 border-b pb-3"
             )}
           >
-            <span className="font-semibold text-xl">Meu Carrinho</span>
+            <span className="font-semibold text-xl font-logo">Meu Carrinho</span>
             <div className="flex items-center gap-2">
               <ClearItemsButton type="Carrinho" qtdItens={cartLength} />
               <SheetClose>
@@ -75,7 +77,9 @@ const CartBar = ({
 
         <div className="flex flex-col gap-3 flex-1 overflow-y-scroll scrollbar">
           {cartItems.length > 0 ? (
-            cartItems.map((item) => <SidebarItem key={item.id} type="Carrinho" item={item} />)
+            cartItems.map((item) => (
+              <SidebarItem key={item.id} type="Carrinho" item={item} />
+            ))
           ) : (
             <p className="text-muted-foreground text-center">
               Seu carrinho esta vazio.
@@ -90,6 +94,10 @@ const CartBar = ({
               "bg-contrast text-muted hover:bg-initial/50 hover:text-initial cursor-pointer hover:scale-103 transition-all duration-300"
             )}
             disabled={cartLength === 0}
+            onClick={() => {
+              onOpenChange(false);
+              navigate("/checkout");
+            }}
           >
             Finalizar compra
           </Button>

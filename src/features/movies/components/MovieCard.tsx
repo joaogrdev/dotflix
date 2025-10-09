@@ -1,10 +1,6 @@
 import type { Movie } from "@/types/Movie";
 import { Star } from "lucide-react";
-import {
-  cn,
-  formatRating,
-  generateAndFormatPriceMovie,
-} from "@/lib/utils";
+import { cn, formatRating, generateAndFormatPriceMovie } from "@/lib/utils";
 import FavoriteButton from "./FavoriteButton";
 import TrailerButton from "./TrailerButton";
 import AddToCartButton from "./AddToCartButton";

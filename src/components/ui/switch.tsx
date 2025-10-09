@@ -1,8 +1,7 @@
 import * as SwitchPrimitive from "@radix-ui/react-switch";
-
 import { cn } from "@/lib/utils";
 import { Moon, Sun } from "lucide-react";
-import { useTheme } from "@/components/ThemeProvider"; // hook do seu ThemeProvider
+import { useTheme } from "@/components/ThemeProvider";
 
 function Switch({
   className,
@@ -26,21 +25,16 @@ function Switch({
         className
       )}
     >
-      {/* Ícone da Lua (esquerda) */}
       <Moon
         className={cn(
           "absolute left-1 text-primary pointer-events-none size-4 mobile:size-5"
         )}
       />
-
-      {/* Ícone do Sol (direita) */}
       <Sun
         className={cn(
           "absolute right-1 text-primary pointer-events-none size-4 mobile:size-5"
         )}
       />
-
-      {/* Bolinha que desliza */}
       <span
         className={cn(
           "block rounded-full bg-contrast transition-transform duration-300 size-5 mobile:size-[22px]",

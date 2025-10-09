@@ -19,9 +19,9 @@ import AddToCartButton from "@/features/favorites/components/AddToCartButton";
 const SidebarItem = ({ type, item }: { type: string; item: CartMovie }) => {
   const { theme } = useTheme();
   const removeItem =
-    type === "Carrinho"
-      ? useCartStore((state) => state.removeItem)
-      : useFavoritesStore((state) => state.removeFavorite);
+    type === "Favoritos"
+      ? useFavoritesStore((state) => state.removeFavorite)
+      : useCartStore((state) => state.removeItem);
 
   const handleRemoveItem = () => {
     try {
@@ -33,33 +33,51 @@ const SidebarItem = ({ type, item }: { type: string; item: CartMovie }) => {
   };
 
   return (
-    <Item className={cn("bg-input/50")}>
-      <ItemMedia variant={"image"} className="h-full aspect-[3/4] object-cover">
+    <Item className={cn("bg-input/50", type === "Checkout" && "p-2")}>
+      <ItemMedia
+        variant={"image"}
+        className={cn(
+          "h-full aspect-[3/4] object-cover",
+          type === "Checkout" && "aspect-[9/3]"
+        )}
+      >
         <img src={`https://image.tmdb.org/t/p/w500${item.poster}`} alt="" />
       </ItemMedia>
-      <ItemContent>
-        <ItemTitle className={cn("text-sm font-semibold")}>
+      <ItemContent
+        className={cn(type === "Checkout" && "grid grid-cols-[1fr_auto]")}
+      >
+        <ItemTitle
+          className={cn(
+            "text-base font-semibold font-title",
+            type === "Checkout" && "truncate max-w-[90%]"
+          )}
+        >
           {item.title}
         </ItemTitle>
-        <ItemDescription className={cn("text-lg -mt-1 text-primary/75")}>
+        <ItemDescription
+          className={cn(
+            "text-lg -mt-1 text-primary/75",
+            type === "Checkout" && "text-sm"
+          )}
+        >
           <span className="text-xs mr-1">R$</span>
           {item.price}
         </ItemDescription>
       </ItemContent>
 
       <ItemActions className="flex flex-col">
-        {type !== "Carrinho" && <AddToCartButton movie={item} />}
+        {type === "Favoritos" && <AddToCartButton movie={item} />}
         <Button
           variant={"outline"}
           className={cn(
-            "size-7 hover:scale-110 self-start rounded-sm",
-            type === "Carrinho" && "size-8"
+            "size-8 hover:scale-110 self-start rounded-sm",
+            type === "Favoritos" && "size-7"
           )}
           onClick={handleRemoveItem}
           title={
-            type === "Carrinho"
-              ? "Remover do carrinho"
-              : "Remover dos favoritos"
+            type === "Favoritos"
+              ? "Remover dos favoritos"
+              : "Remover do carrinho"
           }
         >
           <Trash className="text-contrast size-4" />

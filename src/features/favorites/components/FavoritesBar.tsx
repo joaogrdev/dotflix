@@ -42,7 +42,7 @@ const FavoritesBar = ({
               "flex items-center justify-between gap-2 border-b pb-3"
             )}
           >
-            <span className="font-semibold text-xl">Meus Favoritos</span>
+            <span className="font-semibold text-xl font-logo">Meus Favoritos</span>
             <div className="flex items-center gap-2">
               <ClearItemsButton type="Favoritos" qtdItens={favoritesLength} />
               <SheetClose>

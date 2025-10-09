@@ -5,7 +5,6 @@ import { toastError } from "@/lib/toasts";
 import { cn, generateAndFormatPriceMovie } from "@/lib/utils";
 import type { Movie } from "@/types/Movie";
 import { Heart } from "lucide-react";
-import { useEffect } from "react";
 
 const FavoriteButton = ({ movie }: { movie: Movie }) => {
   const { theme } = useTheme();
