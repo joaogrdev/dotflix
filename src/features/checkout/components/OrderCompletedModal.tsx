@@ -27,17 +27,17 @@ const OrderCompletedModal = ({ open }: { open: boolean }) => {
   };
 
   return (
-    <Dialog open={open}>
+    <Dialog open={true}>
       <DialogContent
-        className="flex flex-col items-center gap-6 w-fit bg-muted"
+        className="flex flex-col items-center gap-6 w-fit bg-muted min-w-[300px]"
         showCloseButton={false}
       >
         <DialogHeader>
-          <DialogTitle className="text-xl">
+          <DialogTitle className="text-lg tablet:text-xl">
             Obrigado Uzumaki Naruto!
           </DialogTitle>
         </DialogHeader>
-        <p className="font-thin">Sua compra foi finalizada com sucesso!</p>
+        <p className="text-sm tablet:text-base font-thin text-center">Sua compra foi finalizada com sucesso!</p>
         <Button
           onClick={handleClearOrder}
           className={cn(
