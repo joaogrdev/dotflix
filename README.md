@@ -1,73 +1,78 @@
-# React + TypeScript + Vite
+# 🎬 Dotflix
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Dotflix** é um projeto de front-end criado para o teste técnico da DOT Digital Group. O objetivo foi desenvolver um projeto para listagem e compra de filmes, que transforme a experiência de navegação e compra em algo rápido, intuitivo e moderno. O sistema permite buscar filmes por título, filtrar por categorias, assistir trailers, adicionar ao carrinho e aos favoritos, além de simular a finalização da compra.
 
-Currently, two official plugins are available:
+🔗 [Ver projeto online](https://dotflix-xi.vercel.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## ✨ Funcionalidades
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+- 🎥 **Busca e filtros inteligentes:** pesquise filmes por título e filtre por categorias como “Mais Populares”, “Em Cartaz”, etc.
+- 🛒 **Carrinho persistente:** adicione filmes ao carrinho, com quantidade, preço simulado e persistência no localStorage.
+- 🖤 **Favoritos persistente:** marque filmes como favoritos e tenha acesso localmente.
+- ▶️ **Assistir trailers:** clique no botão para abrir o trailer de um filme sem sair da página.
+- 📱 **Interface responsiva:** totalmente adaptável a desktop, tablet e mobile.
+- 🔄 **Scroll infinito:** ao chegar no final da lista, mais filmes são carregados automaticamente.
+- 💾 **Persistência do carrinho:** os itens permanecem ao atualizar a página.
+- ⚡ **Feedback imediato:** mensagens de sucesso e erro ao adicionar itens ao carrinho.
+- 🖤 **Favoritar filmes:** marcar filmes como favoritos localmente.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## ⚙️ Tecnologias e práticas aplicadas
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **React + TypeScript** - Componentização, tipagem estática e segurança no desenvolvimento.
+- **TailwindCSS + Shadcn/UI** - Estilo moderno, consistente e produtivo.
+- **React Query + Axios** - Gerenciamento de cache e requisições assíncronas.
+- **React Hook Form + Zod** - Formulários tipados com validação robusta.
+- **Zustand** - Persistência de carrinho e favoritos.
+- **Intersection Observer API** - Scroll infinito para carregar mais filmes automaticamente.
+- **Vite** - Bundler moderno e rápido.
+- **Git Flow** - Organização de branches (main, dev e features).
+- **Mobile First & Responsividade** - Layout adaptável a todos os dispositivos.
+- **API TMDB** - Informações de filmes atualizadas em tempo real.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 📸 Preview
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+![Dotflix Preview](https://i.postimg.cc/XJ0w7VyB/print-dotflix.png)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🚀 Como rodar o projeto localmente
+
+1. Clone o repositório:  
+git clone https://github.com/joaogrdev/dotflix.git
+
+2. Entre na pasta:  
+cd dotflix
+
+3. Instale as dependências:  
+npm install
+
+4. Crie um arquivo .env na raiz do projeto e adicione a url base da API do TMDB:  
+VITE_API_BASE_URL="https://api.themoviedb.org/3"
+
+5. Coloque também dentro do arquivo .env a sua chave do TMDB:  
+VITE_TMDB_API_KEY=YOUR_API_KEY_HERE  
+🔗 [Documentação TMDB](https://developer.themoviedb.org/docs/getting-started)
+
+6. Rode o servidor de desenvolvimento:  
+npm run dev
+
+---
+
+## 📌 Possíveis melhorias
+
+- Integrar um backend real para compras.
+- Implementar autenticação de usuários.
+- Adicionar suporte a múltiplos idiomas.
+- Implementar testes unitários e end-to-end.
+
+---
+
+## 🧑‍💻 Autor
+
+Feito por [João Gabriel Ribeiro](https://www.linkedin.com/in/joaogrs/)
