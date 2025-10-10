@@ -19,7 +19,7 @@ const Header = () => {
           if (pathname !== "/") navigate("/");
         }}
       >
-        d<span className="text-contrast text-lg tablet:text-2xl">⬤</span>tflix
+        d<span className="text-contrast text-xl tablet:text-2xl">⬤</span>tflix
         <span className="text-contrast">.</span>
       </h1>
 
